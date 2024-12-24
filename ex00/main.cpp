@@ -1,33 +1,12 @@
-#include "./include/ScalarConverter.hpp"
+#include "ScalarConverter.hpp"
+#include <iostream>
 
-int main(int argc, char **argv)
-{
-    ScalarConverter sc;
-
-    std::cout << "argv test" << std::endl;
-    std::cout << "-------------------" << std::endl;
-    if (argc == 2){
-        sc.convert(argv[1]);
-    }
-    else{
-        std::cout << "Usage: ./convert [value]" << std::endl;
+int main(int argc, char** argv) {
+    if (argc != 2) {
+        std::cout << "Usage: " << argv[0] << " <literal>" << std::endl;
+        return 1;
     }
 
-    std::cout << "Hardcoded test" << std::endl;
-    std::cout << "-------------------" << std::endl;
-
-    //convert int
-    sc.convert("0");
-    sc.convert("42");
-    sc.convert("-42");
-
-    //convert char
-    sc.convert("a");
-    sc.convert("z");
-
-    //convert float
-    sc.convert("0.0f");
-    sc.convert("-4,2f");
-    sc.convert("4.2f");
-
+    ScalarConverter::convert(argv[1]);
+    return 0;
 }
